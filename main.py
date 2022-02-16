@@ -4,18 +4,15 @@
 import random
 import os
 import sys
-import pyperclip
-from tkinter import *
-from tkinter.ttk import *
 
 class pass_generator():
     def __init__(self):
         """Setting the number of characters"""
         while True:
             try:
-                self.number_characters = int(
+                self.length = int(
                     input('Length of the Password (min 8):'))
-                if self.number_characters < 8:
+                if self.length < 8:
                     print("Write a number higher than 7")
                 else:
                     break
@@ -24,18 +21,12 @@ class pass_generator():
 
     def generate(self):
         """Setiing the password characters"""
-        self.lower_letters = 'abcdefghijklmnopqrstuvwxyz'
-        self.upper_letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-        self.all_char = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 ()[]{}*&^%$#!~'
-        self.password = []
-        self.counter = 0
+        self.lower = "abcdefghijklmnopqrstuvwxyz"
+        self.upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        self.digits = "0123456789 !@#$%^&*()"
+        self.string = self.lower + self.upper + self.digits
+        self.password = "".join(random.sample(self.string, self.length))
 
-        while self.counter <= self.number_characters:
-            self.random_char = random.choice(self.all_char)
-            self.password.append(self.random_char)
-            self.counter += 1
-        self.password = ''.join([str(elem) for elem in self.password])
-        print(self.password)
 
 if __name__ == "__main__":
     while True:
