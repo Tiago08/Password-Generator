@@ -4,6 +4,9 @@
 import random
 import os
 import sys
+import pyperclip
+from tkinter import *
+from tkinter.ttk import *
 
 class pass_generator():
     def __init__(self):
